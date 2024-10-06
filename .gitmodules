@@ -1,3 +1,6 @@
 [submodule "Biriq"]
 	path = Biriq
 	url = https://github.com/AyuubMohamud/Biriq
+[submodule "TileLinkIP"]
+	path = TileLinkIP
+	url = https://github.com/AyuubMohamud/TileLinkIP
