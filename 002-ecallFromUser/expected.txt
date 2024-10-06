@@ -1,0 +1,1 @@
+PASSED TEST: Test ecall from U-mode
