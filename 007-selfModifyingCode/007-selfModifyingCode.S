@@ -1,23 +1,35 @@
 .global _start
 _start:
+    mv x31, x0
+    li x3, 19
     nop
     nop
     nop
     nop
-    nop
-    addi x3, x0, 19
+    li x30, 3
+1:  addi x31, x31, 1
+    beq x30, x31, evaluate 
+    la x10, array1
+    lw x11, 0(x10)
     call someRandomFunc
     auipc x1, 0
     sw x3, -4(x1) // modify the call instruction into a nop
-    j _start // go back to beginning, now the jump is registered in the BTB
+    fence.i
+    j 1b
 
 someRandomFunc:
     la x10, array1
     lw x11, 0(x10)
-    bnez x11, failure
-    addi x11, x0, 128
+    addi x11, x11, 1
     sw x11, 0(x10)
     ret
+
+evaluate:
+    li x31, 1
+    la x10, array1
+    lw x11, 0(x10)
+    beq x31, x11, success
+    j failure
 
 success:
     li x3, 0x80000000

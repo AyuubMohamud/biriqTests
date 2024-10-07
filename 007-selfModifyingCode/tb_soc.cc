@@ -14,7 +14,7 @@ int main() {
     m_trace->open("trace.vcd");
     soc->eval();
     bool failedOut = true;
-    for (vluint64_t i = 0; i < 1000; i++) {
+    for (vluint64_t i = 0; i < 2000; i++) {
         if (soc->callenv) {
             failedOut = false;
             break;

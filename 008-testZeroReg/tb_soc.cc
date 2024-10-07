@@ -30,7 +30,7 @@ int main() {
         }
     }
     if (soc->state_o.at(0)==0x00000032 && !failedOut) {
-        printf("PASSED TEST: Test Zba subset\n");
+        printf("PASSED TEST: Test Zero reg\n");
     } else {
         printf("FAIL: Value was 0x%04X\n", soc->state_o.at(0));
         return -1;
