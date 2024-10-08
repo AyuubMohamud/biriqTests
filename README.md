@@ -14,3 +14,6 @@ make clean # For cleaning
 ```
 
 Note that `make` will fail on the first failing test, and `trace.vcd` a trace dump of the failing test will be inside the folder of the test
+
+plc8.mem is used for the population count instruction on the CPU.
+testtop.sv is the fake SOC top file used to test the CPU.
