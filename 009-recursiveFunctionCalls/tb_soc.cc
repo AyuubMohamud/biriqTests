@@ -31,7 +31,10 @@ int main() {
     }
     if (soc->state_o.at(0)==0x00000032 && !failedOut) {
         printf("PASSED TEST: Test recursive functions\n");
-    } else {
+    } else if (failedOut) {
+        printf("Failed out\n");
+    }
+    else {
         printf("FAIL: Value was 0x%04X\n", soc->state_o.at(0));
         return -1;
     }
