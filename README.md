@@ -12,3 +12,5 @@ sh prepare.sh
 make
 make clean # For cleaning
 ```
+
+Note that `make` will fail on the first failing test, and `trace.vcd` a trace dump of the failing test will be inside the folder of the test
