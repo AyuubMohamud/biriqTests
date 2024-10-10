@@ -6,7 +6,7 @@ SUBDIRS = 000-testtests 001-ecall 002-ecallFromUser 003-unalignedLoad 004-unalig
 do_tests: $(SUBDIRS)
 
 $(SUBDIRS):
-	$(MAKE) -C $@ test
+	@$(MAKE) -C $@ test
 
 clean:
 	for dir in $(SUBDIRS); do \
