@@ -8,7 +8,7 @@ test: 000-test
 	@cp -r test.mem obj_dir/
 	@cp -r ../obj_dir/* obj_dir/
 	@cp tb_soc.cc obj_dir/
-	@cd obj_dir; make -f Vtesttop.mk Vtesttop -j$(nproc); ./Vtesttop > ../result.txt; cp trace.vcd ../;
+	@cd obj_dir; make -f Vtesttop.mk Vtesttop -j$(nproc) > /dev/null; ./Vtesttop > ../result.txt; cp trace.vcd ../;
 	@diff result.txt expected.txt
 .PHONY: clean
 clean:

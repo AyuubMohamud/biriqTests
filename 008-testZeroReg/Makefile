@@ -1,7 +1,7 @@
 test: 000-test
 .PHONY: 000-test
 000-test:
-	@echo "Building Test 8: Test unaligned load"
+	@echo "Building Test 8: Test zero register"
 	@sh ./build.sh
 	@mkdir obj_dir
 	@cp -r ../plc8.mem obj_dir/
