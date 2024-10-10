@@ -12,5 +12,5 @@ clean:
 	for dir in $(SUBDIRS); do \
 		$(MAKE) -C $$dir clean; \
 	done
-
+	rm -rf obj_dir
  
