@@ -6,6 +6,10 @@ _start:
     csrrc x0, mstatus, 11
     lga x2, user_mode_program
     csrrw x0, mepc, x2
+    srli x2, x2, 2
+    csrrw x0, pmpaddr0, x2
+    li x2, 127
+    csrrw x0, pmpcfg0, x2
     mret
 
 user_mode_program:
