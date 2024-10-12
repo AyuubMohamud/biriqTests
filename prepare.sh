@@ -1,1 +1,0 @@
-/opt/oss-cad-suite/bin/verilator --trace -cc -IBiriq/rtl/OoO -IBiriq/rtl/memorySystem -IBiriq/rtl/frontend -IBiriq/rtl/mathSystem -IBiriq/rtl -ITileLinkIP/rtl/sram -ITileLinkIP/rtl/interconnect -Idebug testtop.sv --exe tb_soc.cc

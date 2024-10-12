@@ -8,7 +8,6 @@ To run:
 ```Bash
 git submodule init 
 git submodule update
-sh prepare.sh
 make
 make clean # For cleaning
 ```
