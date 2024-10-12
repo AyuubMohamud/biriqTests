@@ -1,7 +1,8 @@
+MAKEFLAGS += --no-print-directory
 test: 000-test
 .PHONY: 000-test
 000-test:
-	@echo "Test 0: Testing test framework"
+	@echo "Building Test 0: Test Framework"
 	@sh ./build.sh
 	@mkdir obj_dir
 	@cp -r ../plc8.mem obj_dir/

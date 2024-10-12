@@ -29,6 +29,7 @@ SECTIONS
     .text : { KEEP(*(.text.boot)) *(.text .text.* .gnu.linkonce.t*) }
     .rodata : { *(.rodata .rodata.* .gnu.linkonce.r*) }
     PROVIDE(_data = .);
+    . = ALIGN(4096);
     .data : { *(.data .data.* .gnu.linkonce.d*) }
     .bss (NOLOAD) : {
         . = ALIGN(16);

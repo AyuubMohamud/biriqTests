@@ -1,3 +1,4 @@
+MAKEFLAGS += --no-print-directory
 test: 000-test
 .PHONY: 000-test
 000-test:

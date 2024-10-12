@@ -1,3 +1,4 @@
+.section .text
 .global _start
 _start:
     lga x2, exception_handler
