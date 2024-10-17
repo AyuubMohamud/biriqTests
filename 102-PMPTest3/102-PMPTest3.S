@@ -11,7 +11,7 @@ _start:
     addi x3, x0, 0x1f
     andn x2, x2, x3
     ori  x2, x2, 0x0f
-    csrrw x0, pmpaddr1, x2
+    csrrw x0, pmpaddr4, x2
     addi x3, x0, 28
     csrrw x0, pmpcfg1, x3
 
