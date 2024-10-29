@@ -39,23 +39,6 @@ wire logic [31:0]               icache_d_data;
 wire logic                      icache_d_corrupt;
 wire logic                      icache_d_valid;
 wire logic                      icache_d_ready;
-wire logic [2:0]                acp_a_opcode;
-wire logic [2:0]                acp_a_param;
-wire logic [3:0]                acp_a_size;
-wire logic [31:0]               acp_a_address;
-wire logic [3:0]                acp_a_mask;
-wire logic [31:0]               acp_a_data;
-wire logic                      acp_a_corrupt;
-wire logic                      acp_a_valid;
-wire logic                      acp_a_ready;
-wire logic [2:0]                acp_d_opcode;
-wire logic [1:0]                acp_d_param;
-wire logic [3:0]                acp_d_size;
-wire logic                      acp_d_denied;
-wire logic [31:0]               acp_d_data;
-wire logic                      acp_d_corrupt;
-wire logic                      acp_d_valid;
-wire logic                      acp_d_ready;
 
 wire logic           dcache_a_source = 0;
 
@@ -113,7 +96,7 @@ wire logic                      ioside_d_corrupt;
 wire logic                      ioside_d_valid;
 wire logic                      ioside_d_ready;
 
-biriq #(32'h00004000, 128, 1, 32, 1, 0, 10, 8, 1) cpu0 (clk,1'b0,icache_a_opcode,
+biriq #(32'h00004000, 128, 1, 32, 0, 10, 8, 1) cpu0 (clk,1'b0,icache_a_opcode,
 icache_a_param,
 icache_a_size,
 icache_a_address,
@@ -147,24 +130,6 @@ dcache_d_data,
 dcache_d_corrupt,
 dcache_d_valid,
 dcache_d_ready,
-acp_a_opcode,
-acp_a_param,
-acp_a_size,
-acp_a_source,
-acp_a_address,
-acp_a_mask,
-acp_a_data,
-acp_a_valid,
-acp_a_ready,
-acp_d_opcode,
-acp_d_param,
-acp_d_size,
-acp_d_source,
-acp_d_denied,
-acp_d_data,
-acp_d_corrupt,
-acp_d_valid,
-acp_d_ready,
 3'b000
 );
 TileLink1toN #(2,  {
