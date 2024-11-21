@@ -96,7 +96,7 @@ wire logic                      ioside_d_corrupt;
 wire logic                      ioside_d_valid;
 wire logic                      ioside_d_ready;
 
-biriq #(32'h00004000, 128, 1, 32, 0, 10, 8, 1) cpu0 (clk,1'b0,icache_a_opcode,
+biriq #(32'h00004000, 64, 1, 32, 0, 10, 8, 1) cpu0 (clk,1'b0,icache_a_opcode,
 icache_a_param,
 icache_a_size,
 icache_a_address,
