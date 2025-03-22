@@ -96,7 +96,7 @@ wire logic                      ioside_d_corrupt;
 wire logic                      ioside_d_valid;
 wire logic                      ioside_d_ready;
 
-biriq #(32'h00004000, 64, 1, 32, 0, 10, 8, 1) cpu0 (clk,1'b0,icache_a_opcode,
+biriq #(32'h00004000, 128, 1, 32, 0, 10, 4, 0) cpu0 (clk,1'b0,icache_a_opcode,
 icache_a_param,
 icache_a_size,
 icache_a_address,
@@ -132,16 +132,16 @@ dcache_d_valid,
 dcache_d_ready,
 3'b000
 );
-TileLink1toN #(2,  {
+TileLink1toNUH #(1, 2, 32, 32,1 , {
     32'h80000000
 }, {
-    32'hFFFFFFFF
-},32, 32, 1, 4) iomultiplex (clk, 1'b0, dcache_a_opcode,dcache_a_param,dcache_a_size,dcache_a_source,dcache_a_address,dcache_a_mask,dcache_a_data,
+    32'h80000000
+}) iomultiplex (clk, 1'b0, dcache_a_opcode,dcache_a_param,dcache_a_size[2:0],dcache_a_source,dcache_a_address,dcache_a_mask,dcache_a_data,
 dcache_a_corrupt,dcache_a_valid,dcache_a_ready,dcache_d_opcode,dcache_d_param,dcache_d_size,dcache_d_source, dcache_d_denied,dcache_d_data,dcache_d_corrupt,dcache_d_valid,
 dcache_d_ready, 
 {memside_a_opcode,ioside_a_opcode},
 {memside_a_param, ioside_a_param},
-{memside_a_size, ioside_a_size},
+{memside_a_size[2:0], ioside_a_size[2:0]},
 {memside_a_source, ioside_a_source},
 {memside_a_address, ioside_a_address},
 {memside_a_mask, ioside_a_mask},
@@ -151,7 +151,7 @@ dcache_d_ready,
 {memside_a_ready, ioside_a_ready},
 {memside_d_opcode, ioside_d_opcode},
 {memside_d_param, ioside_d_param},
-{memside_d_size, ioside_d_size},
+{memside_d_size[2:0], ioside_d_size[2:0]},
 {memside_d_source, ioside_d_source},
 {memside_d_denied, ioside_d_denied},
 {memside_d_data, ioside_d_data},
@@ -170,7 +170,7 @@ wire logic                          sram_a_valid;
 wire logic                          sram_a_ready;
 wire logic [2:0]                    sram_d_opcode;
 wire logic [1:0]                    sram_d_param;
-wire logic [3:0]                    sram_d_size;
+wire logic [2:0]                    sram_d_size;
 wire logic [1:0]                    sram_d_source;
 wire logic                          sram_d_denied;
 wire logic [31:0]                   sram_d_data;
@@ -180,7 +180,7 @@ wire logic                          sram_d_ready;
 openPolarisSRAM #(2, 24, 1, "test.mem") sram0 (
     clk, 1'b0, sram_a_opcode,
     sram_a_param,
-    sram_a_size,
+    sram_a_size[2:0],
     sram_a_source,
     sram_a_address[23:0],
     sram_a_mask,
@@ -198,14 +198,10 @@ openPolarisSRAM #(2, 24, 1, "test.mem") sram0 (
     sram_d_valid,
     sram_d_ready
 );
-TileLinkMtoN #(2, 1, 32, 32, 1, 4, {
-    32'h00000000
-}, {
-    32'h20000000
-}) memoryInterconnect (clk, 1'b0, 
+TileLinkMto1UH #(1, 2, 32, 32, 1) memoryInterconnect (clk, 1'b0, 
 {icache_a_opcode, memside_a_opcode}, 
 {icache_a_param, memside_a_param},
-{icache_a_size, memside_a_size},
+{icache_a_size[2:0], memside_a_size[2:0]},
 {icache_a_source,  memside_a_source},
 {icache_a_address, memside_a_address},
 {icache_a_mask, memside_a_mask},
@@ -215,7 +211,7 @@ TileLinkMtoN #(2, 1, 32, 32, 1, 4, {
 {icache_a_ready, memside_a_ready},
 {icache_d_opcode, memside_d_opcode}, 
 {icache_d_param, memside_d_param},
-{icache_d_size,  memside_d_size},
+{icache_d_size[2:0],  memside_d_size[2:0]},
 {icache_d_source, memside_d_source},
 {icache_d_denied, memside_d_denied},
 {icache_d_data,    memside_d_data},
@@ -245,7 +241,7 @@ sram_d_ready
 
 debug #(1) debugmodule (clk, 1'b0, ioside_a_opcode,
 ioside_a_param,
-ioside_a_size,
+{1'b0, ioside_a_size[2:0]},
 ioside_a_source,
 ioside_a_address[4:0],
 ioside_a_mask,
