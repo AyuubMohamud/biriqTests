@@ -14,7 +14,7 @@ int main() {
   m_trace->open("trace.vcd");
   soc->eval();
   bool failedOut = true;
-  for (vluint64_t i = 0; i < 1000; i++) {
+  for (vluint64_t i = 0; i < 100000000; i++) {
     if (soc->callenv) {
       failedOut = false;
       break;
@@ -29,10 +29,14 @@ int main() {
       simtime++;
     }
   }
-  if (soc->state_o.at(0) == 45 && !failedOut)
-    printf("PASSED TEST: Test Tests\n");
-  else if (failedOut)
-    printf("Failed TEST: Test Tests\n");
+  if (soc->state_o.at(0) == 0x00000032 && !failedOut) {
+    printf("PASSED TEST: Test recursive functions\n");
+  } else if (failedOut) {
+    printf("Failed out\n");
+  } else {
+    printf("FAIL: Value was 0x%04X\n", soc->state_o.at(0));
+    return -1;
+  }
   m_trace->close();
   delete soc;
 }
