@@ -1,0 +1,25 @@
+MAKEFLAGS += --no-print-directory
+test: 000-test
+.PHONY: 000-test
+000-test:
+	@cp ../encoding.h ../riscv_test.h ../test_macros.h ../build.sh ../expected.txt ../link.ld .
+	@sh ./build.sh
+	@mkdir obj_dir
+	@cp -r ../obj_dir/* obj_dir/
+	@cp -r test.mem obj_dir/
+	@cd obj_dir; ./Vtesttop > ../result.txt; cp trace.vcd ../;
+	@diff result.txt expected.txt
+.PHONY: clean
+clean:
+	@rm -rf obj_dir
+	@rm -rf result.txt
+	@rm -rf trace.vcd
+	@rm -rf test.mem
+	@rm -rf dump.txt
+	@rm -rf encoding.h
+	@rm -rf riscv_test.h
+	@rm -rf test_macros.h
+	@rm -rf build.sh
+	@rm -rf expected.txt
+	@rm -rf link.ld
+	@rm -rf test.S
