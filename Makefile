@@ -5,7 +5,7 @@ SUBDIRS = 000-testtests 001-ecall 002-ecallFromUser 003-unalignedLoad 004-unalig
 .PHONY: subdirs $(SUBDIRS)
 
 prepare:
-	-/opt/oss-cad-suite/bin/verilator --trace -cc -IBiriq/rtl/OoO -IBiriq/rtl/memorySystem -IBiriq/rtl/frontend -IBiriq/rtl/ixu -IBiriq/rtl/ixu/alu -IBiriq/rtl -ITileLinkIP/rtl/sram -ITileLinkIP/rtl/interconnect -Idebug testtop.sv --exe tb_soc.cc
+	-/opt/oss-cad-suite/bin/verilator --trace -cc -IBiriq/rtl/OoO -IBiriq/rtl/meu_v1 -IBiriq/rtl/frontend -IBiriq/rtl/ixu -IBiriq/rtl/ixu/alu -IBiriq/rtl -ITileLinkIP/rtl/sram -ITileLinkIP/rtl/interconnect -Idebug testtop.sv --exe tb_soc.cc
 
 do_tests:	$(SUBDIRS)
 
