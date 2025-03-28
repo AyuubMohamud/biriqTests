@@ -11,6 +11,7 @@ FILES = $(notdir $(FILES_B))
 .PHONY: files $(FILES)
 
 prepare:
+	@echo "Running RISC-V compliance tests"
 	@mkdir obj_dir
 	@cp -r ../plc8.mem obj_dir/
 	@cp -r ../obj_dir/* obj_dir/
