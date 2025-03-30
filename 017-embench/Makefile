@@ -1,17 +1,17 @@
 GRN=\033[0;32m
 NC=\033[0m # No Color
-FILES_A := $(wildcard tests/*)
+FILES_A := $(wildcard src/*)
 
 MAKEFLAGS += --no-print-directory --no-builtin-rules
 test : all
 all: prepare do_tests
 
-FILES_B := $(FILES_A:.S=)
+FILES_B := $(FILES_A:.c=)
 FILES = $(notdir $(FILES_B))
 .PHONY: files $(FILES)
 
 prepare:
-	@echo "Running RISC-V compliance tests"
+	@echo "Running Embench"
 	@mkdir obj_dir
 	@cp -r ../plc8.mem obj_dir/
 	@cp -r ../obj_dir/* obj_dir/
@@ -22,7 +22,7 @@ do_tests:	$(FILES)
 
 $(FILES):
 	@mkdir $@
-	@cp tests/$@.S $@/test.S
+	@cp src/$@/* $@/
 	@cp Makefile.test $@/
 	@mv $@/Makefile.test $@/Makefile
 	@$(MAKE) -C $@ test

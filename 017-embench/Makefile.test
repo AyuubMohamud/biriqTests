@@ -1,0 +1,17 @@
+MAKEFLAGS += --no-print-directory
+test: 000-test
+.PHONY: 000-test
+000-test:
+	@cp  ../build.sh ../support/* .
+	@sh ./build.sh
+	@mkdir obj_dir
+	@cp -r ../obj_dir/* obj_dir/
+	@cp -r test.mem obj_dir/
+	@cd obj_dir; ./Vtesttop;
+.PHONY: clean
+clean:
+	@rm -rf obj_dir
+	@rm -rf test.mem
+	@rm -rf dump.txt
+	@rm -rf build.sh
+	@rm -rf link.ld

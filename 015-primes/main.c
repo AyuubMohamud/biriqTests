@@ -1,23 +1,32 @@
 
 #include <stdint.h>
 
-#define SZ 16
-int32_t primes[SZ], sieve[SZ];
-int nSieve = 0;
+#define SZ 42
+
+int callenv(int x) {
+  *(volatile unsigned int *)(0x80000000) = x;
+  *(volatile unsigned int *)(0x80000010) = 0;
+  asm volatile("fence");
+  return 0;
+}
 // will not return
 void haltAndCatchFire(int x) {
   *(volatile unsigned int *)(0x80000000) = x;
   *(volatile unsigned int *)(0x80000010) = 0;
+  asm volatile("fence");
   while (1)
     ;
 }
 void haltAndCatchFireButItPassed() {
   *(volatile unsigned int *)(0x80000000) = 50;
   *(volatile unsigned int *)(0x80000010) = 0;
+  asm volatile("fence");
   while (1)
     ;
 }
 int32_t countPrimes() {
+  int32_t primes[SZ], sieve[SZ];
+  int nSieve = 0;
   primes[0] = 2;
   sieve[0] = 4;
   ++nSieve;
@@ -47,8 +56,13 @@ int32_t countPrimes() {
   }
   return nPrimes;
 }
+#define WARMUP 1
 int main() {
-  if (countPrimes() == 409)
+  for (int x = 0; x < WARMUP; x++) {
+    countPrimes();
+  }
+  callenv(1);
+  if (countPrimes() == 3512)
     haltAndCatchFireButItPassed();
-  haltAndCatchFire(1);
+  haltAndCatchFire(0);
 }

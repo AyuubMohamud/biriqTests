@@ -1,0 +1,7 @@
+Running Embench
+PASSED
+[0;32mPassed test aha-mont64[0m 
+PASSED
+[0;32mPassed test crc32[0m 
+PASSED
+[0;32mPassed test edn[0m 
