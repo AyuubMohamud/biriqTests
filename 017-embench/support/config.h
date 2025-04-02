@@ -1,2 +1,2 @@
 #pragma once
-#define CPU_MHZ 1
+#define CPU_MHZ 0.25

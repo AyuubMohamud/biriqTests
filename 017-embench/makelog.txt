@@ -1,0 +1,113 @@
+Running Embench
+Starting simulation
+Running verilator model at 280.333 kHz
+Starting timer
+Simulation time: 3020.65 ms
+PASSED
+846790 cycles to complete
+[0;32mPassed test aha-mont64[0m 
+Starting simulation
+Running verilator model at 269 kHz
+Starting timer
+Simulation time: 2245.53 ms
+PASSED
+604047 cycles to complete
+[0;32mPassed test crc32[0m 
+Starting simulation
+Running verilator model at 279 kHz
+Starting timer
+Simulation time: 2246.06 ms
+PASSED
+626650 cycles to complete
+[0;32mPassed test edn[0m 
+Starting simulation
+Running verilator model at 268.667 kHz
+Starting timer
+Simulation time: 2354.85 ms
+PASSED
+632670 cycles to complete
+[0;32mPassed test huffbench[0m 
+Starting simulation
+Running verilator model at 256.074 kHz
+Starting timer
+Simulation time: 4191.69 ms
+PASSED
+1073383 cycles to complete
+[0;32mPassed test matmult-int[0m 
+Starting simulation
+Running verilator model at 274.333 kHz
+Starting timer
+Simulation time: 1323.35 ms
+PASSED
+363039 cycles to complete
+[0;32mPassed test md5sum[0m 
+Starting simulation
+Running verilator model at 259.205 kHz
+Starting timer
+Simulation time: 3678.19 ms
+PASSED
+953407 cycles to complete
+[0;32mPassed test nettle-aes[0m 
+Starting simulation
+Running verilator model at 236 kHz
+Starting timer
+Simulation time: 2010.13 ms
+PASSED
+474391 cycles to complete
+[0;32mPassed test nettle-sha256[0m 
+Starting simulation
+Running verilator model at 262 kHz
+Starting timer
+Simulation time: 8879.25 ms
+PASSED
+2326364 cycles to complete
+[0;32mPassed test nsichneu[0m 
+Starting simulation
+Running verilator model at 280.667 kHz
+Starting timer
+Simulation time: 2181.06 ms
+PASSED
+612151 cycles to complete
+[0;32mPassed test picojpeg[0m 
+Starting simulation
+Running verilator model at 258.857 kHz
+Starting timer
+Simulation time: 2679.08 ms
+PASSED
+693498 cycles to complete
+[0;32mPassed test qrduino[0m 
+Starting simulation
+Running verilator model at 260.333 kHz
+Starting timer
+Simulation time: 3880.42 ms
+PASSED
+1010203 cycles to complete
+[0;32mPassed test sglib-combined[0m 
+Starting simulation
+Running verilator model at 270.667 kHz
+Starting timer
+Simulation time: 3283.85 ms
+PASSED
+888828 cycles to complete
+[0;32mPassed test slre[0m 
+Starting simulation
+Running verilator model at 265.667 kHz
+Starting timer
+Simulation time: 3441.6 ms
+PASSED
+914319 cycles to complete
+[0;32mPassed test statemate[0m 
+Starting simulation
+Running verilator model at 263 kHz
+Starting timer
+Simulation time: 1486.44 ms
+PASSED
+390934 cycles to complete
+[0;32mPassed test tarfind[0m 
+Starting simulation
+Running verilator model at 259.333 kHz
+Starting timer
+Simulation time: 4273.6 ms
+PASSED
+1108286 cycles to complete
+[0;32mPassed test ud[0m 

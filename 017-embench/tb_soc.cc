@@ -25,7 +25,15 @@ int main() {
 
   clock_t start, end;
   double kHz;
-  for (vluint64_t k = 0; k < 20; k++) {
+  soc->clk = 1;
+  soc->eval();
+  soc->clk = 0;
+  soc->eval();
+  soc->clk = 1;
+  soc->eval();
+  soc->clk = 0;
+  soc->eval();
+  for (vluint64_t k = 0; k < 50; k++) {
     start = clock();
     soc->clk = 1;
     soc->eval();
@@ -35,7 +43,7 @@ int main() {
     kHz +=
         (1.0 / ((double)(clock() - start) / (double)(CLOCKS_PER_SEC))) / 1000.0;
   }
-  kHz /= 20.0;
+  kHz /= 50.0;
   std::cerr << "Running verilator model at " << kHz << " kHz" << std::endl;
   for (vluint64_t i = 0; i < 100000000; i++) {
     if (soc->callenv) {
@@ -72,7 +80,11 @@ int main() {
       simtime++;
     }
   }
+
 finish:
+  std::cerr << "Simulation time: "
+            << double(counter_end - counter_start) * (1.0 / kHz) << " ms"
+            << std::endl;
   if (timeout) {
     printf("TIMEOUT\n");
   } else if (!failedOut) {
