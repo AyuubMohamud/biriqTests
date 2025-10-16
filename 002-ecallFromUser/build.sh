@@ -5,4 +5,4 @@ riscv32-unknown-elf-gcc -T link.ld -o ecall002.elf -ffreestanding -nostdlib -mar
 riscv32-unknown-elf-objdump -d ecall002.elf >> dump.txt
 riscv32-unknown-elf-objcopy -O verilog --verilog-data-width=4 ecall002.elf test.mem
 rm -rf *.o
-#rm -rf *.elf
+rm -rf *.elf

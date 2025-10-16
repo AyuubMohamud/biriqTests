@@ -33,6 +33,7 @@ int main() {
         printf("PASSED TEST: Test cache hazard\n");
     } else {
         printf("FAIL: Value was 0x%04X\n", soc->state_o.at(0));
+        m_trace->close();
         return -1;
     }
     m_trace->close();

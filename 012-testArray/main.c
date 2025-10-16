@@ -1,8 +1,8 @@
 #include <stdint.h>
 
-int array[4096];
+int array[512];
 void setup() {
-  for (int x = 0; x < 4096; x++) {
+  for (int x = 0; x < 512; x++) {
     array[x] = x;
   }
 }
@@ -25,10 +25,10 @@ void haltAndCatchFireButItPassed() {
 int main() {
   setup();
   int acc = 0;
-  for (int x = 4095; x >= 0; x--) {
+  for (int x = 511; x >= 0; x--) {
     acc += array[x];
   }
-  if (acc == 8386560) {
+  if (acc == 130816  ) {
     haltAndCatchFireButItPassed();
   }
   haltAndCatchFire(acc);

@@ -14,7 +14,7 @@ int main() {
   m_trace->open("trace.vcd");
   soc->eval();
   bool failedOut = true;
-  for (vluint64_t i = 0; i < 100000000; i++) {
+  for (vluint64_t i = 0; i < 1000000; i++) {
     if (soc->callenv) {
       failedOut = false;
       break;
@@ -34,6 +34,7 @@ int main() {
   } else if (failedOut) {
     printf("Failed out\n");
   } else {
+      m_trace->close();
     printf("FAIL: Value was 0x%04X\n", soc->state_o.at(0));
     return -1;
   }

@@ -1,0 +1,16 @@
+{ "aha-mont64" : 4004, W
+  "crc32" : 4010, W
+  "edn" : 4010, W
+  "huffbench" : 4120, W
+  "matmult-int" : 3985, L
+  "md5sum" : 4002, W
+  "nettle-aes" : 4026, W
+  "nettle-sha256" : 3997, W
+  "nsichneu" : 4001, L
+  "picojpeg" : 4030, W
+  "sglib-combined" : 3981, L
+  "slre" : 4010, W
+  "statemate" : 4001, W
+  "tarfind" : 4033, W
+  "ud" : 3999 L
+}

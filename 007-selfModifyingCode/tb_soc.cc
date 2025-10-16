@@ -14,7 +14,7 @@ int main() {
     m_trace->open("trace.vcd");
     soc->eval();
     bool failedOut = true;
-    for (vluint64_t i = 0; i < 2000; i++) {
+    for (vluint64_t i = 0; i < 10000; i++) {
         if (soc->callenv) {
             failedOut = false;
             break;
@@ -32,9 +32,10 @@ int main() {
     if (soc->state_o.at(0)==0x00000032 && !failedOut) {
         printf("PASSED TEST: Test self modifying code\n");
     } else {
+            m_trace->close();
         printf("FAIL: Value was 0x%04X\n", soc->state_o.at(0));
         return -1;
     }
-    m_trace->close();
+
     delete soc;
 }

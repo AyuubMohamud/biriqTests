@@ -14,22 +14,25 @@ int main() {
   m_trace->open("trace.vcd");
   soc->eval();
   bool failedOut = true;
-  // for (vluint64_t i = 0; i < 1000; i++) {
-  //     if (soc->callenv) {
-  //         failedOut = false;
-  //         break;
-  //     } else {
-  //         soc->clk = 1;
-  //         soc->eval();
-  //         m_trace->dump(simtime);
-  //         simtime++;
-  //         soc->clk = 0;
-  //         soc->eval();
-  //         m_trace->dump(simtime);
-  //         simtime++;
-  //     }
-  // }
-  printf("PASSED TEST: Test Tests\n");
+  for (vluint64_t i = 0; i < 1000; i++) {
+    if (soc->callenv) {
+      failedOut = false;
+      break;
+    } else {
+      soc->clk = 1;
+      soc->eval();
+      m_trace->dump(simtime);
+      simtime++;
+      soc->clk = 0;
+      soc->eval();
+      m_trace->dump(simtime);
+      simtime++;
+    }
+  }
+  if (soc->state_o.at(0) == 45 && !failedOut)
+    printf("PASSED TEST: Test Tests\n");
+  else if (failedOut)
+    printf("Failed TEST: Test Tests\n");
   m_trace->close();
   delete soc;
 }

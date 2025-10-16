@@ -1,0 +1,28 @@
+This is a very simple UART RX/TX slave, supporting configurable baud rates and interrupts.
+
+Address map:
+0x00:   Configuration and Status Register (R/W)
+    Bit 0 - Enable interrupt when TX Fifo is not full
+    Bit 1 - Enable interrupt when RX Fifo is not empty
+    Bit 2 - Enable Transmission/Recival
+    Bit 14:3 - Baud Rate divisor
+    Bit 15 - RX Fifo full
+    Bit 16 - RX Fifo empty
+    Bit 17 - TX Fifo full
+    Bit 18 - TX Fifo empty
+
+The baud rate divisor sets the UART speed according to the following equation:
+
+uart_clock_frequency/baud_rate_divisor = baud_rate
+
+For example for running at 100MHZ and a 115200 baud rate:
+Using the equation :
+100000000/115200 = 868
+
+Setting the baud rate divisor at 868 will then set the UART to operate at 115200 bits per second.
+
+0x04:   Transmission FIFO (W only)
+    Bit 7:0 - Value to write
+
+0x08:   Recival FIFO (R only)
+    Bit 7:0 - Value received

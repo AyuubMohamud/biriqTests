@@ -96,7 +96,7 @@ wire logic                      ioside_d_corrupt;
 wire logic                      ioside_d_valid;
 wire logic                      ioside_d_ready;
 
-biriq #(32'h00004000, 128, 1, 32, 0, 10, 4, 0) cpu0 (clk,1'b0,icache_a_opcode,
+biriq #(32'h00004000, 256, 1, 16, 0, 8, 8, 32, 32) cpu0 (clk,1'b0,icache_a_opcode,
 icache_a_param,
 icache_a_size,
 icache_a_address,
@@ -132,7 +132,7 @@ dcache_d_valid,
 dcache_d_ready,
 3'b000
 );
-TileLink1toNUH #(1, 2, 32, 32,1 , {
+TileLink1toNUH #(0, 2, 32, 32,1 , {
     32'h80000000
 }, {
     32'h80000000
@@ -198,7 +198,7 @@ openPolarisSRAM #(2, 24, 1, "test.mem") sram0 (
     sram_d_valid,
     sram_d_ready
 );
-TileLinkMto1UH #(1, 2, 32, 32, 1) memoryInterconnect (clk, 1'b0, 
+TileLinkMto1UH #(0, 2, 32, 32, 1) memoryInterconnect (clk, 1'b0, 
 {icache_a_opcode, memside_a_opcode}, 
 {icache_a_param, memside_a_param},
 {icache_a_size[2:0], memside_a_size[2:0]},
