@@ -3,14 +3,14 @@ _start:
     lga x2, exception_handler
     csrrw x0, mtvec, x2
     li x2, 0x0F0F0F0F
-    lh x0, 0(x2) // should take exception
+    sh x0, 0(x2) // should take exception
 
     li x3, 0x80000000
     sw x0, 0(x3)
     sw x0, 16(x3)    
 
     li x2, 0x0F0F0F0F
-    lw x0, 0(x2) // should take exception
+    sw x0, 0(x2) // should take exception
 
     li x3, 0x80000000
     sw x0, 0(x3)

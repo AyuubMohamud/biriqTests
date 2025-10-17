@@ -1,3 +1,0 @@
-This is a FPGA block ram slave.
-
-TL_AW controls the amount of RAM instantiated

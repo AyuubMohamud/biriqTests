@@ -2,7 +2,7 @@ MAKEFLAGS += --no-print-directory
 test: 000-test
 .PHONY: 000-test
 000-test:
-	@echo "Building Test 9: Test fibonacci"
+	@echo "Building Test 9: Test factorial"
 	@sh ./build.sh
 	@mkdir obj_dir
 	@cp -r ../plc8.mem obj_dir/
